@@ -2,7 +2,7 @@
 
 //get request to send the adjective to the server
   $("#getAdjectiveButton").click(function() {
-    $.get('http://localhost:3003/adjective', function(response) {
+    $.get('adjective', function(response) {
       var adjective = response.word;
       $("#adjective").text(adjective);
     });
@@ -10,7 +10,7 @@
 
 //get request to send the verb to the server
   $("#getVerbButton").click(function() {
-    $.get('http://localhost:3003/verb', function(response) {
+    $.get('verb', function(response) {
       var verb = response.word;
       $("#verb").text(verb);
     });
@@ -18,7 +18,7 @@
 
 //get request to send the noun to the server
   $("#getNounButton").click(function() {
-    $.get('http://localhost:3003/noun', function(response) {
+    $.get('noun', function(response) {
       var noun = response.word;
       $("#noun").text(noun);
     });
@@ -38,7 +38,7 @@
 //if its the adjective then respond with adjective word
     if (adjective) {
       var adjPost = {word: adjective};
-      $.post("http://localhost:3003/adjective", adjPost, function(response) {
+      $.post("adjective", adjPost, function(response) {
         var adjectiveRes = response;
         $("#adjectiveRes").text(adjectiveRes);
       });
@@ -47,7 +47,7 @@
 //if its the noun then respond with noun word
     if (noun) {
       var nounPost = {word: noun};
-      $.post("http://localhost:3003/noun", nounPost, function(response) {
+      $.post("noun", nounPost, function(response) {
         var nounRes = response;
         $("#nounRes").text(nounRes);
       });
@@ -56,7 +56,7 @@
 //if its the verb then respond with verb word
     if (verb) {
       var verbPost = {word: verb};
-      $.post("http://localhost:3003/verb", verbPost, function(response) {
+      $.post("verb", verbPost, function(response) {
         var verbRes = response;
         $("#verbRes").text(verbRes);
       });
