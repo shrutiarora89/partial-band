@@ -17,7 +17,7 @@ var Noun = require('./lib/noun.js');
 var Verb =require('./lib/verb.js');
 
 //storing the server port in a variable
-var port = 3003;
+var port = process.env.PORT || 3000;
 
 //telling the server that we have directory of app
 app.use(express.static(__dirname + '/app/'));
