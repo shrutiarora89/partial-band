@@ -14,14 +14,13 @@ app.use(bodyparser.urlencoded({
 var getRandomWord = require('./lib/getRandomWord.js');
 var Adjective = require('./lib/adjective.js');
 var Noun = require('./lib/noun.js');
-var Verb =require('./lib/verb.js');
+var Verb = require('./lib/verb.js');
 
 //storing the server port in a variable
 var port = process.env.PORT || 3000;
 
 //telling the server that we have directory of app
 app.use(express.static(__dirname + '/app/'));
-
 
 //this will start the server
 app.listen(port, function() {
@@ -33,10 +32,9 @@ app.get('/', function(req, res) {
   res.sendFile('index.html');
 });
 
-
-var postWord = function(word,object) {
+var postWord = function(word, object) {
   object[word] = true;
-}
+};
 
 /**** creating ADJECTIVES instances****/
 var adjectives = new Adjective();
@@ -47,10 +45,10 @@ app.get('/adjective', function(req, res) {
 });
 
 //if the word is adjective then post adjective
-app.post('/adjective', function(req,res) {
+app.post('/adjective', function(req, res) {
   var word = req.body.word;
   if (word) {
-    postWord(word,adjectives);
+    postWord(word, adjectives);
     console.log(adjectives);
     res.send("Added " + word + " to list of adjectives");
   }
@@ -68,10 +66,10 @@ app.get('/noun', function(req, res) {
 });
 
 //if the word is noun then post noun
-app.post('/noun', function(req,res) {
+app.post('/noun', function(req, res) {
   var word = req.body.word;
   if (word) {
-    postWord(word,nouns);
+    postWord(word, nouns);
     res.send("Added " + word + " to list of nouns");
   }
 });
@@ -79,7 +77,7 @@ app.post('/noun', function(req,res) {
 /********************/
 
 /**** creating VERBS instances****/
-var verbs = new Adjective();
+var verbs = new Verb();
 
 //retrive from the server verb words
 app.get('/verb', function(req, res) {
@@ -87,10 +85,10 @@ app.get('/verb', function(req, res) {
 });
 
 //if the word is verb then post verb
-app.post('/verb', function(req,res) {
+app.post('/verb', function(req, res) {
   var word = req.body.word;
   if (word) {
-    postWord(word,verbs);
+    postWord(word, verbs);
     console.log(adjectives);
     res.send("Added " + word + " to list of verbs");
   }
